@@ -1,0 +1,30 @@
+<h1>Welcome to Airbnb</h1>
+
+<h1>Your Profile</h1>
+<%= link_to(image_tag(@user.image.thumb.url, alt: 'Image'), @user.image.url, target: '_blank') if @user.image? %>
+<%= @user.name%></p>
+Birthday:
+  <%= @user.birthday%></p>
+  Email:
+    <%= @user.email%>
+
+
+    <% @user.listings.each_with_index do |user,index| %>
+        <%=index+1%>.
+
+        <%= user.title%></p>
+        <p>Address:
+         <%= user.address%></p>
+         <p>Price per night:RM
+         <%= user.price%></p>
+        <%= link_to 'Show', user %></p>
+
+     
+
+    <% end %>
+
+</br>
+<%= link_to 'New Listing', new_listing_path %>
+
+</br>
+<%= link_to 'Back', listings_path %>

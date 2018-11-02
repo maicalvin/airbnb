@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Airbnb80</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <% if signed_in? %>
+      Signed in as: <%= current_user.name %>
+      <%= button_to 'Sign out', sign_out_path, method: :delete %>
+            <%= link_to 'My Profile', user_show_path(current_user)%>
+
+    <% else %>
+      <%= link_to 'Sign in', sign_in_path %>
+      <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
+
+    <% end %>
+
+    <div id="flash">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+    <%= yield %>
+  </body>
+</html>

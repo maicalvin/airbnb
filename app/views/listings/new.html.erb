@@ -1,0 +1,39 @@
+<h1>Host a Home </h1>
+
+<%= form_with(model: @listing, local: true) do |form| %>
+
+  <%= form.label :title %>
+  <%= form.text_field :title,placeholder:'TITLE' %>
+
+  <%= form.label :address %>
+  <%= form.text_field :address,placeholder:'ADDRESS' %>
+
+  <%= form.label :price %>
+  <%= form.text_field :price, placeholder:'How much Per Night (RM)?' %> 
+
+  <%= form.label :feature %>
+  <%= form.text_field :feature, placeholder:'What feature does your accomodation have?' %>
+
+  <%= form.label :room%>
+  <%= form.text_field :num_room,placeholder:'How many rooms?' %> 
+
+  <%= form.label :bed %>
+  <%= form.text_field :num_bed, placeholder:'How many beds?' %> 
+
+  <%= form.label :bathroom %>
+  <%= form.text_field :num_bath, placeholder:'How many bathrooms?' %> 
+
+  <%= form.label :people %>
+  <%= form.text_field :num_people, placeholder:'How many people can stay in this accomodation?' %> 
+  
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+    
+  
+</p>
+   <%= form.submit %>
+  </p>
+<% end %>
+ 
+
+<%= link_to 'Back', listings_path %>

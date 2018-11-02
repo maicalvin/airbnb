@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<h1>Your Accomodation</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @listing.title %>
+</p>
+<p>
+<%= link_to(image_tag(@listing.image.thumb.url, alt: 'Image'), @listing.image.url, target: '_blank') if @listing.image? %>
+  <strong>Address:</strong>
+  <%= @listing.address %>
+</p>
+ <strong>Features:</strong>
+  <%= @listing.feature %>
+</p>
+ <strong>Number of Room:</strong>
+  <%= @listing.num_room %>
+</p>
+ <strong>Number of Bed:</strong>
+  <%= @listing.num_bed %>
+</p>
+ <strong>Number of Bathroom:</strong>
+  <%= @listing.num_bath %>
+</p>
+ <strong>People:</strong>
+  <%= @listing.num_people %>
+</p>
+<strong>Created by:</strong>
+  <%= @listing.user.name %>
+</p>
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+ <td><%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+<%= link_to 'Back', listings_path %>
