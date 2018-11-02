@@ -45,7 +45,7 @@
     <%= form.label :image %>
     <%= form.file_field :image %>
   <% if @listing.image? %>
-    <%= image_tag @listing.image.thumb.url %>
+    <%= image_tag(@listing.image.url, alt: 'Image') if @listing.image? %>
       <%= label_tag :remove_image do %>
         Remove image
         <%= form.check_box :remove_image %>
