@@ -6,7 +6,7 @@
   <%= @listing.title %>
 </p>
 <p>
-<%= link_to(image_tag(@listing.image.thumb.url, alt: 'Image'), @listing.image.url, target: '_blank') if @listing.image? %>
+<%= image_tag(@listing.image.url, alt: 'Image') if @listing.image? %>
   <strong>Address:</strong>
   <%= @listing.address %>
 </p>

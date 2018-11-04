@@ -16,16 +16,17 @@
 #
 default: &default
   adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+   encoding: unicode
 
 development:
   <<: *default
   database: airbnb8_0_development
-
-  # The specified database role being used to connect to postgres.
+  username: 'YOUR_USER'
+  password: 'YOUR_PASSWORD'
+  host: localhost
+#atabase role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.

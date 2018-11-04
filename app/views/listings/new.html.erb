@@ -28,6 +28,12 @@
   
     <%= form.label :image %>
     <%= form.file_field :image %>
+    <%= form.text_field :remote_image_url %>
+    <%= form.label :attachments %>
+    <%= form.file_field :attachments, multiple: true %>
+</div>
+<small>Enter URL to an image</small>
+
     
   
 </p>

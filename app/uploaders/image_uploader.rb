@@ -7,13 +7,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
-  version :thumb do
-    process resize_to_fill: [350, 350]
-end
 
-version :small_thumb, from_version: :thumb do
-  process resize_to_fill: [20, 20]
-end
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def extension_whitelist
