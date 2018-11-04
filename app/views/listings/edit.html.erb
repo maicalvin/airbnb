@@ -47,6 +47,8 @@
 
    <%= form.text_field :remote_image_url %>
 <small>Enter URL to an image</small>
+ <%= form.label :attachments %>
+    <%= form.file_field :attachments, multiple: true %>
   <% if @listing.image? %>
 <%= image_tag(@listing.image.url, alt: 'Image') if @listing.image? %>
 
