@@ -1,8 +1,7 @@
 <h1>Welcome to Airbnb</h1>
 
 <h1>Your Profile</h1>
-<%= image_tag(@user.image.url, alt: 'Image') if @user.image? %>
-
+<%= link_to(image_tag(@user.image.thumb.url, alt: 'Image'), @user.image.url, target: '_blank') if @user.image? %>
 <%= @user.name%></p>
 Birthday:
   <%= @user.birthday%></p>
