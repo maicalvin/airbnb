@@ -35,6 +35,8 @@
 <strong>Created by:</strong>
   <%= @listing.user.name %>
 </p>
+<%= link_to 'Reserve Now', new_reservation_path(@listing) %> |
+
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
  <td><%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 

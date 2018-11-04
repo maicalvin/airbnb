@@ -1,0 +1,9 @@
+<h1>New Reservation</h1>
+<% form_for @reservation do |f| %>
+  <%= f.text_field :reserve_from %>
+  <%= f.select :reserve_from, [['Hot','hot'],['Medium','medium'],['Cold','cold']] %>
+  <%= f.submit %>
+<% end %>
+<%= render 'form', reservation: @reservation %>
+
+<%= link_to 'Back', reservations_path %>
