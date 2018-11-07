@@ -10,11 +10,14 @@ class ReservationsController < ApplicationController
   # GET /reservations/1
   # GET /reservations/1.json
   def show
+
   end
 
   # GET /reservations/new
   def new
     @reservation = Reservation.new
+    @listing = Listing.find_by(id: params[:listing_id])
+
   end
 
   # GET /reservations/1/edit
@@ -24,19 +27,16 @@ class ReservationsController < ApplicationController
   # POST /reservations
   # POST /reservations.json
   def create
+    
     @reservation = Reservation.new(reservation_params)
-
-    respond_to do |format|
-      if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
-        format.json { render :show, status: :created, location: @reservation }
-      else
-        format.html { render :new }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
-    end
+    @reservation.user_id = current_user.id
+    @reservation.listing_id=Listing.find_by(id: params[:listing_id]).id
+   if @reservation.save
+    redirect_to listing_reservation_path(:id=>@reservation.id)
+   else 
+    redirect_to new_listing_reservation_path
   end
-
+end
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json
   def update
@@ -69,6 +69,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.fetch(:reservation, {})
-    end
+    params.require(:reservation).permit(:user_id, :reserve_from, :price, :reserve_until, :listing_id)
+  end
 end

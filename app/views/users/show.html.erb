@@ -1,17 +1,38 @@
-<h1>Welcome to Airbnb</h1>
+<%= link_to 'Home', listings_path %>
 
+<h1>Welcome to Airbnb</h1>
 <h1>Your Profile</h1>
 <%= image_tag(@user.image.url, alt: 'Image') if @user.image? %></p>
 <%= @user.name%></p>
+
 Birthday:
   <%= @user.birthday%></p>
   Email:
     <%= @user.email%></p>
 
+<hr>
+<strong>Your Reservations</strong></p>
+    <% @user.reservations.each_with_index do |reservation,index| %>
+        <%=index+1%>.
+        <%= image_tag(reservation.listing.image.url, alt: 'Image') if reservation.listing.image? %></p>
 
+        <%= reservation.listing.title%></p>
+        <p>Address:
+        <%= reservation.listing.title%></p>
+         <p>Price per night:RM
+        <%= reservation.listing.price%></p>
+        <p> Check In :
+        <%= reservation.reserve_from%></p>
+         <p> Check Out :
+        <%= reservation.reserve_until%></p>
+                <%= link_to 'Show', listing_reservation_path(:listing_id=>reservation.listing_id,:id=>reservation.id) %> </p>
+
+    <% end %>
+    <hr>
+<strong>Your Listings</strong></p>
     <% @user.listings.each_with_index do |user,index| %>
         <%=index+1%>.
-
+        <%= image_tag(user.image.url, alt: 'Image') if user.image? %></p>   
         <%= user.title%></p>
         <p>Address:
          <%= user.address%></p>
@@ -27,4 +48,3 @@ Birthday:
 <%= link_to 'New Listing', new_listing_path %>
 
 </br>
-<%= link_to 'Back', listings_path %>

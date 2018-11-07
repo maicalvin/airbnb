@@ -1,9 +1,21 @@
 <h1>New Reservation</h1>
-<% form_for @reservation do |f| %>
-  <%= f.text_field :reserve_from %>
-  <%= f.select :reserve_from, [['Hot','hot'],['Medium','medium'],['Cold','cold']] %>
-  <%= f.submit %>
+<%= image_tag(@listing.image.url, alt: 'Image') if @listing.image? %></p>
+
+<strong><%=@listing.title%></strong></p>
+<strong>Address:</strong>
+<%=@listing.address%></p>
+<strong>Price:</strong> RM
+<%=@listing.price%>
+
+<%= simple_form_for(@reservation,method: :post,url: listing_reservations_path) do |form| %>
+    Check In :
+    <%= form.date_select :reserve_from, type:'date'%></p>
+    Check Out:
+    <%= form.date_select :reserve_until, type:'date'%></p>
+
+  <%= form.button :submit %>
 <% end %>
+
 <%= render 'form', reservation: @reservation %>
 
-<%= link_to 'Back', reservations_path %>
+<%= link_to 'Back', listings_path %>

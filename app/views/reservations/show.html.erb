@@ -1,4 +1,15 @@
 <p id="notice"><%= notice %></p>
+Please Confirm Your Reservation Before You Make Your Payment</p>
+<strong><%=@reservation.listing.title %></p></strong>
+<strong>Address:</strong>
+<%=@reservation.listing.address %></p>
 
-<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
-<%= link_to 'Back', reservations_path %>
+<strong>Check In:</strong>
+<%=@reservation.reserve_from%></p>
+<strong>Check Out:</strong>
+<%=@reservation.reserve_until%></p>
+<strong>Total price for <%=(@reservation.reserve_until-@reservation.reserve_from).to_i%> nights : </strong>RM 
+
+<%=@reservation.price%></p>
+
+<%= link_to 'Back', new_listing_reservation_path %>
