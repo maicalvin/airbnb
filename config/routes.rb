@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'braintree/new'
+
   resources :listings do
     resources :reservations
   end
@@ -10,6 +13,10 @@ Rails.application.routes.draw do
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
   end
+  post '/listings/:listing_id/reservations/:id/checkout'=>'reservations#checkout', as: "reservation_payment"
+
+
+  
   get"/users/:id"=>"users#show",as: "user_show"
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"

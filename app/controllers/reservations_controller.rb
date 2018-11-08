@@ -10,7 +10,9 @@ class ReservationsController < ApplicationController
   # GET /reservations/1
   # GET /reservations/1.json
   def show
-
+    @client_token = Braintree::ClientToken.generate
+    @listing = Listing.find_by(id: params[:listing_id])
+    @reservation = Reservation.find_by(id: params[:id])
   end
 
   # GET /reservations/new
@@ -19,7 +21,24 @@ class ReservationsController < ApplicationController
     @listing = Listing.find_by(id: params[:listing_id])
 
   end
-
+  def checkout
+  
+    nonce_from_the_client = params[:checkout_form][:payment_method_nonce]
+    byebug
+    result = Braintree::Transaction.sale(
+     :amount => Reservation.find_by(id: params[:id]).price, #this is currently hardcoded
+     :payment_method_nonce => nonce_from_the_client,
+     :options => {
+        :submit_for_settlement => true
+      }
+     )
+  
+    if result.success?
+      redirect_to :root, :flash => { :success => "Transaction successful!" }
+    else
+      redirect_to :root, :flash => { :error => "Transaction failed. Please try again." }
+    end
+  end
   # GET /reservations/1/edit
   def edit
   end

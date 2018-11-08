@@ -31,6 +31,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'file_validators'
 gem 'simple_form'
+gem 'braintree'
 
 #Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
