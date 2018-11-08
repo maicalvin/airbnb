@@ -11,14 +11,11 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
-
   end
-
 
   # GET /listings/new
   def new
     @listing = Listing.new
-
   end
 
   # GET /listings/1/edit
@@ -35,7 +32,6 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
     @listing.save
-
     redirect_to listings_path
     
 
