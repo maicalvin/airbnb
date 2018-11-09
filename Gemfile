@@ -32,7 +32,7 @@ gem 'mini_magick'
 gem 'file_validators'
 gem 'simple_form'
 gem 'braintree'
-
+gem'sidekiq'
 #Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

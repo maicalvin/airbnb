@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+<%= form_for :search, method: :get, url:search_listings_path do |f| %>
+<%= f.text_field :generic , placeholder:"Search"%>
+<%= f.submit "Search"%>
+<% end %>
+
+
     <title>Airbnb80</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>

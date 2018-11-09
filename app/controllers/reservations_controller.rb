@@ -34,11 +34,13 @@ class ReservationsController < ApplicationController
      )
   
     if result.success?
-      
+    byebug
+      @reservation.update(payment :1)
       UserMailer.signup_confirmation(@reservation).deliver_now
 
       redirect_to :root, :flash => { :success => "Transaction successful!" }
     else
+
       redirect_to :root, :flash => { :error => "Transaction failed. Please try again." }
     end
   end
@@ -51,6 +53,7 @@ class ReservationsController < ApplicationController
   def create
     
     @reservation = Reservation.new(reservation_params)
+    @reservation.payment=1
     @reservation.user_id = current_user.id
     @reservation.listing_id=Listing.find_by(id: params[:listing_id]).id
    if @reservation.save
@@ -91,6 +94,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-    params.require(:reservation).permit(:user_id, :reserve_from, :price, :reserve_until, :listing_id)
+    params.require(:reservation).permit(:user_id, :reserve_from,:payment, :price, :reserve_until, :listing_id)
   end
 end

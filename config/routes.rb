@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   resources :listings do
     resources :reservations
+    collection do
+      get:search
+      get:price
+    end
   end
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
@@ -16,7 +20,6 @@ Rails.application.routes.draw do
   post '/listings/:listing_id/reservations/:id/checkout'=>'reservations#checkout', as: "reservation_payment"
 
 
-  
   get"/users/:id"=>"users#show",as: "user_show"
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"

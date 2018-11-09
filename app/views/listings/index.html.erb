@@ -10,20 +10,23 @@
     </tr>
   </thead>
 
-  <tbody>
-
+ 
+    <div class='flex'>
     <% @listings.each do |listing| %>
-<%= image_tag(listing.image.url, alt: 'Image') if listing.image? %></p>
+    <%= image_tag(listing.image.url, alt: 'Image') if listing.image? %></p>
         <%= listing.title%></p>
          <p>Address:
         <%= listing.address%></p>
+        <p>Number of People: Max
+        <%= listing.num_people%> Persons</p>
         <p>Price per Night: RM
         <%= listing.price%></p>
          <p>Hosted by:
           <%= listing.user.name%></p>
-
         <%= link_to 'Show', listing %></p>
     <% end %>
+          </div>
+
   </tbody>
 </table>
 

@@ -12,6 +12,8 @@ Please Confirm Your Reservation Before You Make Your Payment</p>
 <strong>Total price for <%=(@reservation.reserve_until-@reservation.reserve_from).to_i+1%>days <%=(@reservation.reserve_until-@reservation.reserve_from).to_i%> nights : </strong>RM 
 
 <%=@reservation.price%></p>
+<%byebug%>
+<%if @reservation.payment ==nil||@reservation.payment ==0%>
 </div>
 <div class="demo-frame  payment_po">
 
@@ -30,8 +32,12 @@ Please Confirm Your Reservation Before You Make Your Payment</p>
     <div class="button-container">
       <%= form.submit "Purchase", disabled: true, class: "btn btn-primary", id: "submit-payment-btn" %>
     </div>
+    </div>  
+
   <% end %>
-</div>  
+  <% elsif @reservation.payment==1 %>
+  YOU HAVE MADE THE PAYMENT.</p>
+  <%end%>
 <%= link_to 'Back', new_listing_reservation_path %>
 <!-- Load the Client component. -->
 <script src="https://js.braintreegateway.com/web/3.6.3/js/client.min.js"></script>

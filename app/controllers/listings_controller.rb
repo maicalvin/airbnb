@@ -4,11 +4,19 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
+  
     @listings = Listing.order(:title).page params[:page]
 
   end
 
-  # GET /listings/1
+  def search
+    @listings =Listing.start_with(params[:search][:generic])
+    @listings=@listings.page params[:page]
+    render 'index'
+  end
+  
+  
+    # GET /listings/1
   # GET /listings/1.json
   def show
   end
