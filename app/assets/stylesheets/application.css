@@ -16,11 +16,29 @@
  */
  body{
     background-color: rgb(231, 229, 229) ;
+    background-image: url("bg1.jpg");
 }
 h1{
-    color:rgb(7, 7, 78);
+    color:rgb(9, 9, 94);
     text-align: center;
     font-family: 'Ramaraja', serif;
     font-size: 3em;
+    text-shadow: 5px 5px 5px  rgb(159, 200, 238);
+}
+.header{
+    display: inline-flex;
+    position: relative;
+    background-image: linear-gradient(to bottom right, pink , rgb(209, 198, 198));
+    color:black;
 
+}
+.header a{
+    color:white;
+text-shadow: 3px 2px 2px rgb(112, 112, 199);
+outline: 3px black;
+}
+.header_search{
+    margin-left: 55em;
+    justify-content: right;
+    align-items: right;
 }

@@ -34,10 +34,9 @@ class ReservationsController < ApplicationController
      )
   
     if result.success?
-    byebug
-      @reservation.update(payment :1)
+      byebug
       UserMailer.signup_confirmation(@reservation).deliver_now
-
+        @reservation.update(payment:1)
       redirect_to :root, :flash => { :success => "Transaction successful!" }
     else
 
@@ -53,7 +52,7 @@ class ReservationsController < ApplicationController
   def create
     
     @reservation = Reservation.new(reservation_params)
-    @reservation.payment=1
+    @reservation.payment=0
     @reservation.user_id = current_user.id
     @reservation.listing_id=Listing.find_by(id: params[:listing_id]).id
    if @reservation.save

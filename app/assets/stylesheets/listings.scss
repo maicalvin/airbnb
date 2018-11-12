@@ -2,21 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 img{
-text-align: center;
     width:200px;
     height:200px;  
 }
-.img{
-    display:inline-block;
 
-}
 .address{
     color:blue;
 }
 body{
-    width:100%;
+    width:100vw;
 }
+
 .flex{
-    width:40em;
-    border-radius: 100px;
+    max-width: 100em;
+    align-items: center;
+    text-align: left;
+    position: relative;
+    display: inline-flex;
+  
+}
+.each_card{
+    max-width: 300px;
+    padding: 5px;
+    margin: 1em;
+}
+.search_bar{
+    display: flex;
+    
 }

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <h1>Your Accomodation</h1>
 <div class='image'>
-
+ 
 <%= image_tag(@listing.image.url, alt: 'Image') if @listing.image? %>
   <% @listing.attachments.each do |attachment| %>
       <%= link_to(image_tag(attachment.url, alt: 'Image'), attachment.url, target: '_blank') %>

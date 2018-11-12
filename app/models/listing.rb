@@ -6,5 +6,7 @@ class Listing < ApplicationRecord
 validates :image, file_size: { less_than: 10.megabytes }
 scope :start_with, ->(name) { where title: name }
 
+include PgSearch
+pg_search_scope :search, against: [:title, :price, :num_people]
 
 end

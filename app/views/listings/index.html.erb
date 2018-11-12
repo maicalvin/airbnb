@@ -1,18 +1,33 @@
 <p id="notice"><%= notice %></p>
+<%= link_to 'New Listing', new_listing_path %>
 
 <h1>Accomodations</h1>
+          <div class=' container search_bar ' >
+          
+  <div id="search_listing">
+  <%= form_with scope: :search, method: :get,remote: :true, url:search_listings_path do |f| %>
+<%= f.text_field :generic , placeholder:"Search"%>
+<%= f.submit "Search"%>
+ <% end %> 
+ </div>
+ <div class='ml-5' >
+  Price:
+  <%=link_to price_desc_listings_path do%>
+    <i class="fas fa-sort-amount-down"></i>
+  <% end %> 
+  
+  <%=link_to price_asc_listings_path do %>
+    <i class="fas fa-sort-amount-up"></i>
+  <% end %> 
+  </div>
+</div>
 <%= paginate @listings %>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+          <div class='flex container ' >
 
- 
-    <div class='flex'>
     <% @listings.each do |listing| %>
+  <div class="card each_card">
+    <div class="card-body">
     <%= image_tag(listing.image.url, alt: 'Image') if listing.image? %></p>
         <%= listing.title%></p>
          <p>Address:
@@ -24,13 +39,22 @@
          <p>Hosted by:
           <%= listing.user.name%></p>
         <%= link_to 'Show', listing %></p>
+  
+    </div>
+    <div class="card-footer">
+       Updated on:  <%= listing.updated_at.day%>/<%= listing.updated_at.month%>/<%= listing.updated_at.year %></p>
+    </div>
+  </div>
     <% end %>
-          </div>
 
-  </tbody>
-</table>
-
-<br>
-<%= paginate @listings %>
-
-<%= link_to 'New Listing', new_listing_path %>
+      <br>
+  </p>
+</div>
+  
+  <script>
+  $.ajax({
+  method: "GET",
+  url: "test.js",
+  dataType: "script"
+});
+</script>

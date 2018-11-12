@@ -19,10 +19,12 @@ class Reservation < ApplicationRecord
         end
     end
     def reservation_available
+        if self.reserve_from==nil
         self.listing.reservations.each do |reservation|
             if(self.reserve_from..self.reserve_until).overlaps?(reservation.reserve_from..reservation.reserve_until)
     errors.add(:dates_overlap,"Dates overlap,try for other days")
     end
+end
 end
 end
 before_save do

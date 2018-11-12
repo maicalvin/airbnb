@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :reservations
     collection do
       get:search
-      get:price
+      get:price_desc
+      get:price_asc
+
     end
   end
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]

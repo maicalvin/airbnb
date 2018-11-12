@@ -1,7 +1,7 @@
-<%= link_to 'Home', listings_path %>
 
 <h1>Welcome to Airbnb</h1>
 <h1>Your Profile</h1>
+<div class="container profile">
 <%= image_tag(@user.image.url, alt: 'Image') if @user.image? %></p>
 <%= @user.name%></p>
 
@@ -10,7 +10,9 @@ Birthday:
   Email:
     <%= @user.email%></p>
 
+</div>
 <hr>
+<div class="container">
 <strong>Your Reservations</strong></p>
     <% @user.reservations.each_with_index do |reservation,index| %>
         <%=index+1%>.
@@ -48,3 +50,4 @@ Birthday:
 <%= link_to 'New Listing', new_listing_path %>
 
 </br>
+</div>

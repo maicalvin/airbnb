@@ -4,15 +4,29 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-  
-    @listings = Listing.order(:title).page params[:page]
+@listings = Listing.all
 
+@listings = Listing.page(params[:page])
   end
 
   def search
     @listings =Listing.start_with(params[:search][:generic])
-    @listings=@listings.page params[:page]
+    @listings = @listings.page(params[:page])
+
     render 'index'
+   
+  end
+  def price_asc
+    @listings = Listing.page(params[:page])
+    @listings =@listings.order('price asc')
+    render 'index'
+   
+  end
+  def price_desc
+    @listings = Listing.page(params[:page])
+    @listings =@listings.order('price desc')
+    render 'index'
+   
   end
   
   
