@@ -34,6 +34,8 @@ gem 'simple_form'
 gem 'braintree'
 gem'sidekiq'
 gem 'pg_search'
+gem 'unirest'
+
 
 #Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

@@ -13,9 +13,20 @@ class ListingsController < ApplicationController
     @listings =Listing.start_with(params[:search][:generic])
     @listings = @listings.page(params[:page])
 
+     
+    
     render 'index'
    
   end
+  def search_ajax
+    # @listings = Listing.page(params[:page])
+
+    @listings =@listings.general(params[:search_ajax][:general])
+        respond_to do |format|
+        format.js {render :json => @listings }
+      end
+    
+    end
   def price_asc
     @listings = Listing.page(params[:page])
     @listings =@listings.order('price asc')

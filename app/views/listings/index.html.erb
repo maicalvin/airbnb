@@ -3,11 +3,11 @@
 
 <h1>Accomodations</h1>
           <div class=' container search_bar ' >
-          
-  <div id="search_listing">
-  <%= form_with scope: :search, method: :get,remote: :true, url:search_listings_path do |f| %>
-<%= f.text_field :generic , placeholder:"Search"%>
+  <div >
+  <%= form_with scope: :search_ajax, method: :get, remote: :true, url:search_ajax_listings_path do |f| %>
+<%= f.text_field :generic, placeholder:"Search",id: "search_listings"%>
 <%= f.submit "Search"%>
+
  <% end %> 
  </div>
  <div class='ml-5' >
@@ -51,10 +51,25 @@
   </p>
 </div>
   
-  <script>
-  $.ajax({
-  method: "GET",
-  url: "test.js",
-  dataType: "script"
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  $("#search_listings").change(function(){
+    $.ajax({
+      method: "GET",
+      url: "search_ajax_listings",
+            data: {search_ajax: this.value },
+      dataType: "json",
+            success: function(data) {
+        $("#search_listings").children('option:not(:first)').remove();
+        data.forEach(function(el) { 
+          $("#search_listings").append(`<option value='${el}'>${el}</option>`)
+ })
+      },
+      
+    });
+  });
 });
-</script>
+  </script>

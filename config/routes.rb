@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get:search
       get:price_desc
       get:price_asc
+      get:search_ajax
 
     end
   end

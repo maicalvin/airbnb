@@ -34,7 +34,6 @@ class ReservationsController < ApplicationController
      )
   
     if result.success?
-      byebug
       UserMailer.signup_confirmation(@reservation).deliver_now
         @reservation.update(payment:1)
       redirect_to :root, :flash => { :success => "Transaction successful!" }
