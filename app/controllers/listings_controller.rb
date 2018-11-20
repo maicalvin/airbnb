@@ -12,6 +12,7 @@ class ListingsController < ApplicationController
   def search
     @listings =Listing.start_with(params[:search][:generic])
     @listings = @listings.page(params[:page])
+    OKOKOKOKOKOK
 
      
     
